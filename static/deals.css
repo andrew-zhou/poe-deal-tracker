@@ -1,0 +1,37 @@
+body {
+  background: #CD88AF;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+}
+
+.header {
+  color: #440027;
+  font-size: 32px;
+}
+
+.dealsList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.dealItem {
+  display: flex;
+  justify-content: space-around;
+  padding-right: 40px;
+  font-size: 16px;
+  color: #661141;
+}
+
+.itemHeader {
+  font-weight: bold;
+}
+
+.date, .name, .price, .savings, .description {
+  flex: 0.2;
+}

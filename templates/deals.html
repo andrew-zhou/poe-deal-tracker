@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Path of Exile Deals</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='deals.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        Path of Exile Deals
+      </div>
+      <ul class="dealsList">
+      <li class="dealItem itemHeaders">
+        <div class="date itemHeader">Date</div>
+        <div class="name itemHeader">Name</div>
+        <div class="price itemHeader">Price</div>
+        <div class="savings itemHeader">Savings</div>
+        <div class="description itemHeader">Description</div>
+      </li>
+        {% for deal in deals %}
+          <li class="dealItem">
+            <div class="date">{{deal.date}}</div>
+            <div class="name">{{deal.name}}</div>
+            <div class="price">{{deal.price}}</div>
+            <div class="savings">{{deal.savings}}</div>
+            <div class="description">{{deal.description}}</div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>

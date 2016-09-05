@@ -29,8 +29,7 @@ def _write_deals_to_csv(deals):
     csv_file = Settings.getSetting('DEALS_FILE')
     existing_deals = _get_existing_deals_dict()
     for deal in deals:
-        date_str = deal.date.isoformat()
-        existing_deals[date_str] = deal
+        existing_deals[deal.get_key()] = deal
     with open(csv_file, 'w', newline='') as csv:
         csv_writer = writer(csv)
         csv_writer.writerow(('Date', 'Name', 'Price', 'Savings', 'Description'))
@@ -41,12 +40,5 @@ def _get_existing_deals_dict():
     deals_dict = {}
     csv_file = Settings.getSetting('DEALS_FILE')
     with open(csv_file, 'r', newline='') as csv:
-        has_header = bool(csv.read(1))
-        csv.seek(0)
-        csv_reader = reader(csv)
-        if has_header:
-            next(csv_reader)
-        for row in csv_reader:
-            d = datetime.strptime(row[0], '%Y-%m-%d').date()
-            deals_dict[row[0]] = Deal(d, *row[1:])
+        deals_dict = Deal.dict_from_csv(csv)
     return deals_dict
